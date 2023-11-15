@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Views/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="ProniaTask/Controllers/HomeController.cs" />
+      <File FileName="ProniaTask/Controllers/AboutController.cs" />
+      <File FileName="ProniaTask/Views/_ViewStart.cshtml" Line="5" Column="1" />
+      <File FileName="ProniaTask/Views/About/Index.cshtml" Line="335" Column="44" />
+      <File FileName="ProniaTask/Views/Home/Index.cshtml" Line="9" Column="44" />
+      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" Line="259" Column="53" />
+      <File FileName="ProniaTask/Program.cs" />
+      <File FileName="ProniaTask/appsettings.json" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProniaTask" expanded="True">
+            <Node name="ProniaTask" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="About" expanded="True" />
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="assets" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
