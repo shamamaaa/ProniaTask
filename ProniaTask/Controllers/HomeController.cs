@@ -23,10 +23,13 @@ namespace ProniaTask.Controllers
         public IActionResult Index()
         {
             List<Product> products = _context.Products.OrderByDescending(p=>p.Id).Take(8).ToList();
+            List<Slide> slides = _context.Slides.OrderBy(p => p.Id).ToList();
+
 
             HomeVM homeVM = new()
             {
                 Products = products,
+                Slides = slides
             };
 
             return View(homeVM);

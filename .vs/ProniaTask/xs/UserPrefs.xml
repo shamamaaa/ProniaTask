@@ -1,34 +1,33 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Views/Home/Index.cshtml">
     <Files>
-      <File FileName="ProniaTask/Controllers/HomeController.cs" Line="32" Column="31" />
+      <File FileName="ProniaTask/Controllers/HomeController.cs" Line="36" Column="10" />
       <File FileName="ProniaTask/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="ProniaTask/Views/_ViewStart.cshtml" Line="5" Column="1" />
-      <File FileName="ProniaTask/Views/About/Index.cshtml" Line="20" Column="11" />
-      <File FileName="ProniaTask/Views/Home/Index.cshtml" Line="1338" Column="53" />
-      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" Line="259" Column="53" />
-      <File FileName="ProniaTask/Program.cs" Line="14" Column="11" />
-      <File FileName="ProniaTask/appsettings.json" Line="7" Column="18" />
-      <File FileName="ProniaTask/Models/Product.cs" Line="13" Column="1" />
-      <File FileName="ProniaTask/DAL/AppDbContext.cs" Line="17" Column="6" />
+      <File FileName="ProniaTask/Views/_ViewStart.cshtml" />
+      <File FileName="ProniaTask/Views/About/Index.cshtml" />
+      <File FileName="ProniaTask/Views/Home/Index.cshtml" Line="26" Column="47" />
+      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" />
+      <File FileName="ProniaTask/Program.cs" />
+      <File FileName="ProniaTask/appsettings.json" />
+      <File FileName="ProniaTask/Models/Product.cs" Line="6" Column="1" />
+      <File FileName="ProniaTask/DAL/AppDbContext.cs" Line="18" Column="6" />
       <File FileName="ProniaTask/Properties/launchSettings.json" Line="1" Column="1" />
-      <File FileName="ProniaTask/ViewModels/HomeVM.cs" Line="12" Column="2" />
-      <File FileName="ProniaTask/Views/_ViewImports.cshtml" Line="4" Column="1" />
+      <File FileName="ProniaTask/ViewModels/HomeVM.cs" Line="11" Column="6" />
+      <File FileName="ProniaTask/Views/_ViewImports.cshtml" />
+      <File FileName="ProniaTask/Models/Slide.cs" Line="14" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProniaTask">
             <Node name="ProniaTask">
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
-              <Node name="DAL" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="ViewModels" expanded="True" />
+              <Node name="Properties" expanded="True" />
               <Node name="Views">
-                <Node name="About" expanded="True" />
+                <Node name="Home">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
@@ -36,9 +35,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
