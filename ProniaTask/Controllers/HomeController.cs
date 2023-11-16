@@ -3,17 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using ProniaTask.DAL;
+using ProniaTask.Models;
+using ProniaTask.ViewModels;
 
 namespace ProniaTask.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: /<controller>/
+
+        private readonly AppDbContext _context;
+
+
+        public HomeController(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            List<Product> products = _context.Products.OrderByDescending(p=>p.Id).Take(8).ToList();
+
+            HomeVM homeVM = new()
+            {
+                Products = products,
+            };
+
+            return View(homeVM);
         }
     }
 }

@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/.DS_Store",
+      "PackagePath": "staticwebassets/.DS_Store"
+    },
+    {
       "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/css/Pe-icon-7-stroke.css",
       "PackagePath": "staticwebassets/assets/css/Pe-icon-7-stroke.css"
     },
