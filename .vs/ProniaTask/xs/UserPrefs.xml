@@ -1,33 +1,26 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Views/Home/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Controllers/ProductController.cs">
     <Files>
+      <File FileName="ProniaTask/Views/Product/Detail.cshtml" Line="498" Column="49" />
+      <File FileName="ProniaTask/Program.cs" Line="15" Column="1" />
+      <File FileName="ProniaTask/Controllers/ProductController.cs" Line="51" Column="29" />
       <File FileName="ProniaTask/Controllers/HomeController.cs" Line="36" Column="10" />
       <File FileName="ProniaTask/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="ProniaTask/Views/_ViewStart.cshtml" />
-      <File FileName="ProniaTask/Views/About/Index.cshtml" />
-      <File FileName="ProniaTask/Views/Home/Index.cshtml" Line="26" Column="47" />
-      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" />
-      <File FileName="ProniaTask/Program.cs" />
-      <File FileName="ProniaTask/appsettings.json" />
-      <File FileName="ProniaTask/Models/Product.cs" Line="6" Column="1" />
-      <File FileName="ProniaTask/DAL/AppDbContext.cs" Line="18" Column="6" />
-      <File FileName="ProniaTask/Properties/launchSettings.json" Line="1" Column="1" />
-      <File FileName="ProniaTask/ViewModels/HomeVM.cs" Line="11" Column="6" />
-      <File FileName="ProniaTask/Views/_ViewImports.cshtml" />
-      <File FileName="ProniaTask/Models/Slide.cs" Line="14" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask">
+          <Node name="ProniaTask" expanded="True">
             <Node name="ProniaTask">
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Views">
-                <Node name="Home">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="ProductController.cs" selected="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Product" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -35,9 +28,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

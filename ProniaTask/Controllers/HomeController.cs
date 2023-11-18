@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProniaTask.DAL;
 using ProniaTask.Models;
 using ProniaTask.ViewModels;
@@ -22,17 +23,16 @@ namespace ProniaTask.Controllers
 
         public IActionResult Index()
         {
-            List<Product> products = _context.Products.OrderByDescending(p=>p.Id).Take(8).ToList();
             List<Slide> slides = _context.Slides.OrderBy(p => p.Id).ToList();
+            List<Product> productList = _context.Products.Include(x => x.ProductImages).ToList();
 
-
-            HomeVM homeVM = new()
+            HomeVM vm = new HomeVM
             {
-                Products = products,
-                Slides = slides
+                Products = productList,
+                Slides = slides,
+                LatestProducts = productList.OrderByDescending(p => p.Id).Take(8).ToList()
             };
-
-            return View(homeVM);
+            return View(vm);
         }
     }
 }

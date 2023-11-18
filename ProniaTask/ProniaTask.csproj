@@ -15,6 +15,7 @@
     <None Remove="Models\" />
     <None Remove="DAL\" />
     <None Remove="ViewModels\" />
+    <None Remove="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -26,6 +27,7 @@
     <Folder Include="Models\" />
     <Folder Include="DAL\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
