@@ -115,22 +115,25 @@
                         <div class="selector-wrap color-option">
                             <span class="selector-title border-bottom-0">Color</span>
                             <select class="nice-select wide border-bottom-0 rounded-0">
-                                <option value="default">Black & White</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="red">Red</option>
+
+                                @foreach (ProductColor item in Model.Product.ProductColors)
+                                    {       
+                                        <option>@item.Color.Name</option>
+                                    }
                             </select>
                         </div>
                         <div class="selector-wrap size-option">
                             <span class="selector-title">Size</span>
                             <select class="nice-select wide rounded-0">
-                                <option value="medium">Medium Size & Poot</option>
-                                <option value="large">Large Size With Poot</option>
-                                <option value="small">Small Size With Poot</option>
+
+                                @foreach (ProductSize item in Model.Product.ProductSizes)
+                                {
+                                    <option>@item.Size.Name</option>
+                                }
                             </select>
                         </div>
                         <p class="short-desc">
-                            @Model.Product.Description
+                            @(Model.Product.Description.Length <= 80 ? Model.Product.Description : (Model.Product.Description.Substring(0,80)+"..."))
                         </p>
                         <ul class="quantity-with-btn">
                             <li class="quantity">
@@ -213,9 +216,15 @@
                         <div class="product-category product-tags">
                             <span class="title">Tags :</span>
                             <ul>
-                                <li>
-                                    <a href="#">Furniture</a>
-                                </li>
+
+                                @foreach (ProductTag item in Model.Product.ProductTags)
+                                {
+
+                                    <li>
+                                        <a href="#">@item.Tag.Name@(item != Model.Product.ProductTags[Model.Product.ProductTags.Count-1] ? ",":"" )</a>
+                                    </li>
+                                }
+
                             </ul>
                         </div>
                         <div class="product-category social-link align-items-center pb-0">
@@ -486,7 +495,7 @@
 
                                 <div class="swiper-slide product-item">
                                     <div class="product-img">
-                                        <a href="single-product-variable.html">
+                                        <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">
                                             <img style="width: 250px; height: 250px; object-fit: cover;" class="primary-img"
                                                  src="~/assets/images/website-images/@item.ProductImages.FirstOrDefault(img=>img.ProductId==item.Id && img.IsPrimary==true).Url"
                                                  alt="Product Images" />
@@ -536,7 +545,7 @@
                                     </div>
                                     <div class="product-content">
                                         <a class="product-name"
-                                           href="single-product-variable.html">@item.Name</a>
+                                           asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a>
                                         <div class="price-box pb-1">
                                             <span class="new-price">
                                                 $@item.Price

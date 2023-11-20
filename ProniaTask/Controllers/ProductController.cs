@@ -33,7 +33,13 @@ namespace ProniaTask.Controllers
                 return BadRequest();
             }
 
-            Product product = _context.Products.Include(x => x.Category).Include(x => x.ProductImages).FirstOrDefault(x => x.Id == id);
+            Product product = _context.Products
+                .Include(x => x.Category)
+                .Include(x => x.ProductImages)
+                .Include(x => x.ProductTags).ThenInclude(pt => pt.Tag)
+                .Include(x => x.ProductColors).ThenInclude(pt => pt.Color)
+                .Include(x => x.ProductSizes).ThenInclude(pt => pt.Size)
+                .FirstOrDefault(x => x.Id == id);
 
             if (product == null)
             {
