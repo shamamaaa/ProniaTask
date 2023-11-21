@@ -1,0 +1,72 @@
+﻿@model List<Tag>
+@{ int count = 0;}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title .h1">Tag</h1>
+
+            <a asp-action="create" asp-controller="tag" class="btn btn-success">
+                Create tag
+            </a>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Product count
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.ProductTags.Count
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn-sm btn btn-danger">
+                                            <i class="mdi mdi-delete-forever btn-icon-primary">
+                                            </i>
+                                        </a>
+                                        <a class="btn-sm btn btn-warning">
+                                            <i class="mdi mdi-lead-pencil btn-icon-primary">
+                                            </i>
+                                        </a>
+                                        <a class="btn-sm btn btn-primary">
+                                            <i class="mdi mdi-open-in-new btn-icon-primary">
+                                            </i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

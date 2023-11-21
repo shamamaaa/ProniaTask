@@ -16,6 +16,14 @@
     <None Remove="DAL\" />
     <None Remove="ViewModels\" />
     <None Remove="Views\Product\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\ProniaAdmin\" />
+    <None Remove="Areas\ProniaAdmin\Controllers\" />
+    <None Remove="Areas\ProniaAdmin\Views\" />
+    <None Remove="Areas\ProniaAdmin\Views\Home\" />
+    <None Remove="Areas\ProniaAdmin\Views\Shared\" />
+    <None Remove="Areas\ProniaAdmin\Views\Category\" />
+    <None Remove="Areas\ProniaAdmin\Views\Tag\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -28,9 +36,19 @@
     <Folder Include="DAL\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Product\" />
+    <Folder Include="wwwroot\admin\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\ProniaAdmin\" />
+    <Folder Include="Areas\ProniaAdmin\Controllers\" />
+    <Folder Include="Areas\ProniaAdmin\Views\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Home\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Shared\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Category\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Tag\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\admin\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />

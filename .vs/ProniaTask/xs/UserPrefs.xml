@@ -1,30 +1,35 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Category/Index.cshtml">
     <Files>
-      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" Line="96" Column="48" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Category/Index.cshtml" Line="36" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask">
+          <Node name="ProniaTask" expanded="True">
             <Node name="ProniaTask">
-              <Node name="ViewModels" expanded="True" />
-              <Node name="Views">
-                <Node name="Shared">
-                  <Node name="_Layout.cshtml" selected="True" />
+              <Node name="Areas" expanded="True">
+                <Node name="ProniaAdmin" expanded="True">
+                  <Node name="Controllers" expanded="True" />
+                  <Node name="Views" expanded="True">
+                    <Node name="Category" expanded="True">
+                      <Node name="Index.cshtml" selected="True" />
+                    </Node>
+                  </Node>
                 </Node>
               </Node>
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
