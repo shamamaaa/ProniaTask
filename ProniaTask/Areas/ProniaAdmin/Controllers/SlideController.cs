@@ -37,6 +37,13 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 return View();
             }
 
+            bool result = _context.Slides.Any(s => s.Order < 0);
+            if (result)
+            {
+                ModelState.AddModelError("Order", "Order can't be smaller than 0.");
+                return View();
+            }
+
             if (slide.Photo is null)
             {
                 ModelState.AddModelError("Photo", "You need to choose file.");

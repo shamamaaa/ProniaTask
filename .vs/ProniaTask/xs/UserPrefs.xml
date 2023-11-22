@@ -1,45 +1,23 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/Areas/ProniaAdmin/Controllers/CategoryController.cs" relfile="ProniaTask/Areas/ProniaAdmin/Controllers/CategoryController.cs" line="35" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Controllers/SlideController.cs">
-    <Files>
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/CategoryController.cs" Line="34" Column="52" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Category/Update.cshtml" Line="23" Column="7" />
-      <File FileName="ProniaTask/Models/Category.cs" Line="6" Column="15" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Category/Create.cshtml" Line="9" Column="51" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Slide/Create.cshtml" Line="2" Column="10" />
-      <File FileName="ProniaTask/Models/Slide.cs" Line="17" Column="26" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/SlideController.cs" Line="64" Column="1" />
-    </Files>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask" expanded="True">
+          <Node name="ProniaTask">
             <Node name="ProniaTask">
-              <Node name="Areas" expanded="True">
-                <Node name="ProniaAdmin" expanded="True">
-                  <Node name="Controllers" expanded="True">
-                    <Node name="SlideController.cs" selected="True" />
-                  </Node>
-                  <Node name="Views" expanded="True">
-                    <Node name="Category" expanded="True" />
-                    <Node name="Slide" expanded="True" />
-                  </Node>
+              <Node name="Areas">
+                <Node name="ProniaAdmin">
+                  <Node name="Views" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="wwwroot" expanded="True">
-                <Node name="assets" expanded="True">
-                  <Node name="images" expanded="True">
-                    <Node name="slider" expanded="True" />
-                  </Node>
-                </Node>
+              <Node name="Models" expanded="True">
+                <Node name="Slide.cs" selected="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -47,5 +25,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
