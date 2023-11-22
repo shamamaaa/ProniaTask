@@ -44,15 +44,15 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                    <a class="btn-sm btn btn-danger">
+                                    <a asp-action="Delete" asp-controller="Category" asp-route-id="@item.Id" class="btn-sm btn btn-danger" >
                                         <i class="mdi mdi-delete-forever btn-icon-primary">
                                         </i>
                                     </a>
-                                    <a class="btn-sm btn btn-warning">
+                                    <a asp-action="Update" asp-controller="Category" asp-route-id="@item.Id" class="btn-sm btn btn-warning">
                                         <i class="mdi mdi-lead-pencil btn-icon-primary">
                                         </i>
                                     </a>
-                                    <a class="btn-sm btn btn-primary">
+                                    <a asp-action="Detail" asp-controller="Category" asp-route-id="@item.Id" class="btn-sm btn btn-primary">
                                         <i class="mdi mdi-open-in-new btn-icon-primary">
                                         </i>
                                     </a>

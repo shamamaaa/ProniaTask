@@ -1,0 +1,16 @@
+﻿@model Slide
+
+<div class="row justify-content-center">
+    <div class="col-8 text-center">
+        <div class="card m-3">
+            <img src="~/assets/images/slider/@Model.ImageUrl" class="card-img-top" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Title: @Model.Title</h4>
+                <h5 class="card-title">Subtitle: @Model.Subtitle</h5>
+                <p class="card-text">Description: @Model.Description</p>
+                <p class="card-text">Order: @Model.Order</p>
+            </div>
+        </div>
+    </div>
+</div>
+

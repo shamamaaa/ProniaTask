@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dUxjUU0JWZGxV/Oc/lo/X4NjFQ5i58+hDHuS4CffefY=",
+  "Hash": "oVev2XKXJ/mrzqZCpb1FDQx6D3si/On9BqITKfcT1ss=",
   "Source": "ProniaTask",
   "BasePath": "_content/ProniaTask",
   "Mode": "Default",
@@ -3230,6 +3230,40 @@
       "OriginalItemSpec": "wwwroot/assets/images/sidebar/banner/1-270x300.jpg"
     },
     {
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/1-1.jpg",
+      "SourceId": "ProniaTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
+      "BasePath": "_content/ProniaTask",
+      "RelativePath": "assets/images/slider/1-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/slider/1-1.jpg"
+    },
+    {
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/2-1.jpg",
+      "SourceId": "ProniaTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
+      "BasePath": "_content/ProniaTask",
+      "RelativePath": "assets/images/slider/2-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/slider/2-1.jpg"
+    },
+    {
       "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/bg/1-1.jpg",
       "SourceId": "ProniaTask",
       "SourceType": "Discovered",
@@ -3262,6 +3296,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/images/slider/bg/2-1.jpg"
+    },
+    {
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/FnyMQI-XoAIdNUJ.jpg",
+      "SourceId": "ProniaTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
+      "BasePath": "_content/ProniaTask",
+      "RelativePath": "assets/images/slider/FnyMQI-XoAIdNUJ.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/slider/FnyMQI-XoAIdNUJ.jpg"
     },
     {
       "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/inner-img/1-1-524x617.png",

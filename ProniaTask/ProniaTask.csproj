@@ -24,6 +24,7 @@
     <None Remove="Areas\ProniaAdmin\Views\Shared\" />
     <None Remove="Areas\ProniaAdmin\Views\Category\" />
     <None Remove="Areas\ProniaAdmin\Views\Tag\" />
+    <None Remove="Areas\ProniaAdmin\Views\Slide\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -45,6 +46,7 @@
     <Folder Include="Areas\ProniaAdmin\Views\Shared\" />
     <Folder Include="Areas\ProniaAdmin\Views\Category\" />
     <Folder Include="Areas\ProniaAdmin\Views\Tag\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Slide\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
