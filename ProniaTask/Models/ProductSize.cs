@@ -9,6 +9,7 @@ namespace ProniaTask.Models
 
         public Product Product { get; set; }
         public Size Size { get; set; }
+        
     }
 }
 

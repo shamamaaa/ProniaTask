@@ -25,6 +25,10 @@
     <None Remove="Areas\ProniaAdmin\Views\Category\" />
     <None Remove="Areas\ProniaAdmin\Views\Tag\" />
     <None Remove="Areas\ProniaAdmin\Views\Slide\" />
+    <None Remove="Utilities\" />
+    <None Remove="Utilities\Extensions\" />
+    <None Remove="Areas\ProniaAdmin\Views\Size\" />
+    <None Remove="Areas\ProniaAdmin\Views\Color\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -47,6 +51,11 @@
     <Folder Include="Areas\ProniaAdmin\Views\Category\" />
     <Folder Include="Areas\ProniaAdmin\Views\Tag\" />
     <Folder Include="Areas\ProniaAdmin\Views\Slide\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Utilities\Extensions\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Size\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Size\" />
+    <Folder Include="Areas\ProniaAdmin\Views\Color\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

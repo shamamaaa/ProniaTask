@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.DAL;
 using ProniaTask.Models;
+using ProniaTask.Utilities.Extensions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProniaTask.Areas.ProniaAdmin.Controllers
 {
@@ -13,9 +15,12 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
     public class SlideController : Controller
     {
         private readonly AppDbContext _context;
-        public SlideController(AppDbContext context)
+        private readonly IWebHostEnvironment _env;
+
+        public SlideController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -49,25 +54,19 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 ModelState.AddModelError("Photo", "You need to choose file.");
                 return View();
             }
-            if (!slide.Photo.ContentType.Contains("image"))
+            if (!slide.Photo.ValidateType())
             {
                 ModelState.AddModelError("Photo", "You need to choose image file.");
                 return View();
             }
-            if (slide.Photo.Length>2*1024*1024)
+            if (!slide.Photo.ValidateSize(2*1024))
             {
                 ModelState.AddModelError("Photo", "You need to choose up to 2MB.");
                 return View();
             }
 
-            string currentdirectory = Directory.GetCurrentDirectory();
 
-            using (FileStream file = new FileStream(@$"{currentdirectory}/wwwroot/assets/images/slider/{slide.Photo.FileName}", FileMode.Create))
-            {
-                await slide.Photo.CopyToAsync(file);
-            }
-
-            slide.ImageUrl = slide.Photo.FileName ;
+            slide.ImageUrl = await slide.Photo.CreateFile(_env.WebRootPath, "assets", "images", "slider");
 
             await _context.Slides.AddAsync(slide);
             await _context.SaveChangesAsync();
@@ -76,9 +75,82 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         }
 
 
+
+        public async Task<IActionResult> Update(int id)
+        {
+            if (id <= 0) return BadRequest();
+            Slide existed = await _context.Slides.FirstOrDefaultAsync(s => s.Id == id);
+            if (existed is null) return NotFound();
+
+
+            return View(existed);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, Slide slide)
+        {
+
+            Slide existed = await _context.Slides.FirstOrDefaultAsync(s => s.Id == id);
+            if (existed is null) return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                return View(existed);
+            }
+
+            if (slide.Photo is not null)
+            {
+                bool result = _context.Slides.Any(s => s.Order < 0);
+                if (result)
+                {
+                    ModelState.AddModelError("Order", "Order can't be smaller than 0.");
+                    return View(existed);
+                }
+
+                if (!slide.Photo.ValidateType())
+                {
+                    ModelState.AddModelError("Photo", "You need to choose image file.");
+                    return View(existed);
+                }
+                if (!slide.Photo.ValidateSize(2 * 1024))
+                {
+                    ModelState.AddModelError("Photo", "You need to choose up to 2MB.");
+                    return View(existed);
+                }
+                string newimage = await slide.Photo.CreateFile(_env.WebRootPath, "assets", "images", "slider");
+                existed.ImageUrl.DeleteFile(_env.WebRootPath, "assets", "images", "slider");
+                existed.ImageUrl = newimage;
+            }
+
+            existed.Title = slide.Title;
+            existed.Subtitle = slide.Subtitle;
+            existed.Description = slide.Description;
+            existed.Order = slide.Order;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <=0) return BadRequest();
+            Slide slide = await _context.Slides.FirstOrDefaultAsync(s => s.Id == id);
+            if (slide is null) return NotFound();
+
+            slide.ImageUrl.DeleteFile(_env.WebRootPath, "assets", "images", "slider");
+
+
+            _context.Slides.Remove(slide);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> Detail(int id)
         {
             Slide slide = await _context.Slides.FirstOrDefaultAsync(x => x.Id == id);
+            if (slide is null) return NotFound();
             return View(slide);
         }
     }

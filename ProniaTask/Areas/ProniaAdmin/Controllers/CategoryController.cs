@@ -47,7 +47,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Update(int id)
@@ -105,6 +105,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var category = await _context.Categories.Include(c=>c.Products).ThenInclude(p=>p.ProductImages).FirstOrDefaultAsync(x => x.Id == id);
+            if (category is null) return NotFound();
             return View(category);
         }
 

@@ -7,23 +7,23 @@ using Microsoft.EntityFrameworkCore;
 using ProniaTask.DAL;
 using ProniaTask.Models;
 
-
 namespace ProniaTask.Areas.ProniaAdmin.Controllers
 {
     [Area("ProniaAdmin")]
-    public class TagController : Controller
+    public class SizeController : Controller
     {
         private readonly AppDbContext _context;
-        public TagController(AppDbContext context)
+        public SizeController(AppDbContext context)
         {
             _context = context;
         }
 
+
         public async Task<IActionResult> Index()
         {
-            List<Tag> tags = await _context.Tags.Include(t => t.ProductTags).ToListAsync();
+            List<Size> sizes = await _context.Sizes.Include(s => s.ProductSizes).ThenInclude(p => p.Product).ToListAsync();
 
-            return View(tags);
+            return View(sizes);
         }
 
         public async Task<IActionResult> Create()
@@ -32,72 +32,72 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Tag tag)
+        public async Task<IActionResult> Create(Size size)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            bool result = _context.Tags.Any(t => t.Name.ToLower().Trim() == tag.Name.ToLower().Trim());
+            bool result = _context.Sizes.Any(s => s.Name.ToLower().Trim() == size.Name.ToLower().Trim());
             if (result)
             {
-                ModelState.AddModelError("Name", "Tag already exists");
+                ModelState.AddModelError("Name", "Size already exists");
                 return View();
             }
-            await _context.Tags.AddAsync(tag);
+            await _context.Sizes.AddAsync(size);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
-
 
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
 
-            Tag tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
+            Size size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
 
-            if (tag is null) return NotFound();
+            if (size is null) return NotFound();
 
-            return View(tag);
+            return View(size);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Update(int id, Tag tag)
+        public async Task<IActionResult> Update(int id, Size size)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            Tag existed = await _context.Tags.FirstOrDefaultAsync(e => e.Id == id);
+            Size existed = await _context.Sizes.FirstOrDefaultAsync(e => e.Id == id);
             if (existed is null) return NotFound();
 
-            bool result = _context.Tags.Any(t => t.Name == tag.Name && t.Id != id);
+            bool result = _context.Sizes.Any(c => c.Name == size.Name && c.Id != id);
             if (result)
             {
-                ModelState.AddModelError("Name", "Tag already exists");
+                ModelState.AddModelError("Name", "Size already exists");
                 return View();
             }
 
 
-            existed.Name = tag.Name;
+            existed.Name = size.Name;
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
+
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
 
-            Tag existed = await _context.Tags.FirstOrDefaultAsync(c => c.Id == id);
+            Size existed = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
 
             if (existed is null) return NotFound();
 
-            _context.Tags.Remove(existed);
+            _context.Sizes.Remove(existed);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
@@ -105,9 +105,9 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            Tag tag = await _context.Tags.Include(c => c.ProductTags).ThenInclude(p => p.Product).ThenInclude(i=>i.ProductImages).FirstOrDefaultAsync(x => x.Id == id);
-            if (tag is null) return NotFound();
-            return View(tag);
+            var size = await _context.Sizes.Include(s => s.ProductSizes).ThenInclude(p=> p.Product).ThenInclude(pi=>pi.ProductImages).FirstOrDefaultAsync(x => x.Id == id);
+            if (size is null) return NotFound();
+            return View(size);
         }
     }
 }

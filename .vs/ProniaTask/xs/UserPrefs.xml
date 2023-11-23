@@ -1,23 +1,31 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Slide/Detail.cshtml">
+    <Files>
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Slide/Detail.cshtml" Line="20" Column="1" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Tag/Detail.cshtml" Line="4" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask">
+          <Node name="ProniaTask" expanded="True">
             <Node name="ProniaTask">
               <Node name="Areas">
-                <Node name="ProniaAdmin">
-                  <Node name="Views" expanded="True" />
+                <Node name="ProniaAdmin" expanded="True">
+                  <Node name="Views" expanded="True">
+                    <Node name="Slide" expanded="True">
+                      <Node name="Detail.cshtml" selected="True" />
+                    </Node>
+                    <Node name="Tag" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
-              <Node name="Models" expanded="True">
-                <Node name="Slide.cs" selected="True" />
+              <Node name="Utilities" expanded="True">
+                <Node name="Extensions" expanded="True" />
               </Node>
-              <Node name="Views" expanded="True">
+              <Node name="Views">
                 <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -25,8 +33,10 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
 </Properties>

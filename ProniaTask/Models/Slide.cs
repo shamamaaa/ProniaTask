@@ -22,7 +22,7 @@ namespace ProniaTask.Models
         [Required(ErrorMessage = "You must include order")]
         public int Order { get; set; }
         [NotMapped]
-        public IFormFile Photo { get; set; }
+        public IFormFile? Photo { get; set; }
     }
 }
 
