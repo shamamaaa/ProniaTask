@@ -52,6 +52,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvUHJvbmlhQWRtaW4vVmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/Areas/ProniaAdmin/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvUHJvbmlhQWRtaW4vVmlld3MvUHJvZHVjdC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/Areas/ProniaAdmin/Views/Product/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvUHJvbmlhQWRtaW4vVmlld3MvUHJvZHVjdC9EZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/Areas/ProniaAdmin/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvUHJvbmlhQWRtaW4vVmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/Areas/ProniaAdmin/Views/Product/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvUHJvbmlhQWRtaW4vVmlld3MvUHJvZHVjdC9VcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/Areas/ProniaAdmin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvUHJvbmlhQWRtaW4vVmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

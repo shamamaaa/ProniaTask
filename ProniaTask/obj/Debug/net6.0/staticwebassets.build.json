@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oVev2XKXJ/mrzqZCpb1FDQx6D3si/On9BqITKfcT1ss=",
+  "Hash": "gZkRF8utKPmjGyiMsB9yJWvFLU4Z7eUeWPAYsk1yins=",
   "Source": "ProniaTask",
   "BasePath": "_content/ProniaTask",
   "Mode": "Default",
@@ -3230,12 +3230,12 @@
       "OriginalItemSpec": "wwwroot/assets/images/sidebar/banner/1-270x300.jpg"
     },
     {
-      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/1-1.jpg",
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/1-1-524x617.png",
       "SourceId": "ProniaTask",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
       "BasePath": "_content/ProniaTask",
-      "RelativePath": "assets/images/slider/1-1.jpg",
+      "RelativePath": "assets/images/slider/1-1-524x617.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3244,15 +3244,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/images/slider/1-1.jpg"
+      "OriginalItemSpec": "wwwroot/assets/images/slider/1-1-524x617.png"
     },
     {
-      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/2-1.jpg",
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/1-2-524x617.png",
       "SourceId": "ProniaTask",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
       "BasePath": "_content/ProniaTask",
-      "RelativePath": "assets/images/slider/2-1.jpg",
+      "RelativePath": "assets/images/slider/1-2-524x617.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3261,7 +3261,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/images/slider/2-1.jpg"
+      "OriginalItemSpec": "wwwroot/assets/images/slider/1-2-524x617.png"
+    },
+    {
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/20716c00-6141-4eef-9455-c8f4d11f24d6.png",
+      "SourceId": "ProniaTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
+      "BasePath": "_content/ProniaTask",
+      "RelativePath": "assets/images/slider/20716c00-6141-4eef-9455-c8f4d11f24d6.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/slider/20716c00-6141-4eef-9455-c8f4d11f24d6.png"
     },
     {
       "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/bg/1-1.jpg",
@@ -3298,12 +3315,12 @@
       "OriginalItemSpec": "wwwroot/assets/images/slider/bg/2-1.jpg"
     },
     {
-      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/FnyMQI-XoAIdNUJ.jpg",
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/c3c69a9e-6632-432f-80f2-bb70fe561dd1.png",
       "SourceId": "ProniaTask",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
       "BasePath": "_content/ProniaTask",
-      "RelativePath": "assets/images/slider/FnyMQI-XoAIdNUJ.jpg",
+      "RelativePath": "assets/images/slider/c3c69a9e-6632-432f-80f2-bb70fe561dd1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3312,7 +3329,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/images/slider/FnyMQI-XoAIdNUJ.jpg"
+      "OriginalItemSpec": "wwwroot/assets/images/slider/c3c69a9e-6632-432f-80f2-bb70fe561dd1.png"
     },
     {
       "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/slider/inner-img/1-1-524x617.png",

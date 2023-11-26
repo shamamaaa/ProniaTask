@@ -219,7 +219,6 @@
 
                                 @foreach (ProductTag item in Model.Product.ProductTags)
                                 {
-
                                     <li>
                                         <a href="#">@item.Tag.Name@(item != Model.Product.ProductTags[Model.Product.ProductTags.Count-1] ? ",":"" )</a>
                                     </li>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProniaTask.Areas.ProniaAdmin.ViewModels;
 using ProniaTask.DAL;
 using ProniaTask.Models;
 
@@ -32,19 +33,25 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Size size)
+        public async Task<IActionResult> Create(CreateSizeVM sizeVM)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            bool result = _context.Sizes.Any(s => s.Name.ToLower().Trim() == size.Name.ToLower().Trim());
+            bool result = _context.Sizes.Any(s => s.Name.ToLower().Trim() == sizeVM.Name.ToLower().Trim());
             if (result)
             {
                 ModelState.AddModelError("Name", "Size already exists");
                 return View();
             }
+
+            Size size = new Size
+            {
+                Name=sizeVM.Name
+            };
+
             await _context.Sizes.AddAsync(size);
             await _context.SaveChangesAsync();
 
@@ -55,26 +62,31 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         {
             if (id <= 0) return BadRequest();
 
-            Size size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
+            Size existed = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
 
-            if (size is null) return NotFound();
+            if (existed is null) return NotFound();
 
-            return View(size);
+            UpdateSizeVM sizeVM = new UpdateSizeVM
+            {
+                Name= existed.Name
+            };
+
+            return View(sizeVM);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Update(int id, Size size)
+        public async Task<IActionResult> Update(int id, UpdateSizeVM sizeVM)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(sizeVM);
             }
 
             Size existed = await _context.Sizes.FirstOrDefaultAsync(e => e.Id == id);
             if (existed is null) return NotFound();
 
-            bool result = _context.Sizes.Any(c => c.Name == size.Name && c.Id != id);
+            bool result = _context.Sizes.Any(c => c.Name == sizeVM.Name && c.Id != id);
             if (result)
             {
                 ModelState.AddModelError("Name", "Size already exists");
@@ -82,7 +94,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             }
 
 
-            existed.Name = size.Name;
+            existed.Name = sizeVM.Name;
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));

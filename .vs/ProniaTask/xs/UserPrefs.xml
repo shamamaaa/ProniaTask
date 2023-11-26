@@ -1,31 +1,28 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Slide/Detail.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Product/Detail.cshtml">
     <Files>
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Slide/Detail.cshtml" Line="20" Column="1" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Tag/Detail.cshtml" Line="4" Column="1" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/ProductController.cs" Line="146" Column="42" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Detail.cshtml" Line="40" Column="1" />
+      <File FileName="ProniaTask/Views/Product/Detail.cshtml" Line="218" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProniaTask" expanded="True">
             <Node name="ProniaTask">
-              <Node name="Areas">
+              <Node name="Areas" expanded="True">
                 <Node name="ProniaAdmin" expanded="True">
+                  <Node name="Controllers" expanded="True" />
                   <Node name="Views" expanded="True">
-                    <Node name="Slide" expanded="True">
+                    <Node name="Product" expanded="True">
                       <Node name="Detail.cshtml" selected="True" />
                     </Node>
-                    <Node name="Tag" expanded="True" />
                   </Node>
                 </Node>
               </Node>
-              <Node name="Utilities" expanded="True">
-                <Node name="Extensions" expanded="True" />
-              </Node>
-              <Node name="Views">
+              <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Product" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -33,10 +30,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MultiItemStartupConfigurations />
 </Properties>

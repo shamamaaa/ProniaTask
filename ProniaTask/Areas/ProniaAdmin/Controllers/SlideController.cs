@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProniaTask.Areas.ProniaAdmin.ViewModels;
 using ProniaTask.DAL;
 using ProniaTask.Models;
 using ProniaTask.Utilities.Extensions;
@@ -35,7 +37,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Slide slide)
+        public async Task<IActionResult> Create(CreateSlideVM slideVM)
         {
             if (!ModelState.IsValid)
             {
@@ -49,24 +51,26 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 return View();
             }
 
-            if (slide.Photo is null)
-            {
-                ModelState.AddModelError("Photo", "You need to choose file.");
-                return View();
-            }
-            if (!slide.Photo.ValidateType())
+            if (!slideVM.Photo.ValidateType())
             {
                 ModelState.AddModelError("Photo", "You need to choose image file.");
                 return View();
             }
-            if (!slide.Photo.ValidateSize(2*1024))
+            if (!slideVM.Photo.ValidateSize(2*1024))
             {
                 ModelState.AddModelError("Photo", "You need to choose up to 2MB.");
                 return View();
             }
 
-
-            slide.ImageUrl = await slide.Photo.CreateFile(_env.WebRootPath, "assets", "images", "slider");
+            string filename= await slideVM.Photo.CreateFile(_env.WebRootPath, "assets", "images", "slider");
+            Slide slide = new Slide
+            {
+                ImageUrl = filename,
+                Title=slideVM.Title,
+                Subtitle=slideVM.Subtitle,
+                Order=slideVM.Order,
+                Description=slideVM.Description
+            };
 
             await _context.Slides.AddAsync(slide);
             await _context.SaveChangesAsync();
@@ -82,49 +86,58 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             Slide existed = await _context.Slides.FirstOrDefaultAsync(s => s.Id == id);
             if (existed is null) return NotFound();
 
+            UpdateSlideVM slideVM = new UpdateSlideVM
+            {
+                ImageUrl=existed.ImageUrl,
+                Title=existed.Title,
+                Subtitle=existed.Subtitle,
+                Description=existed.Description,
+                Order=existed.Order
+            };
 
-            return View(existed);
+
+            return View(slideVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id, Slide slide)
+        public async Task<IActionResult> Update(int id, UpdateSlideVM slideVM)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(slideVM);
+            }
 
             Slide existed = await _context.Slides.FirstOrDefaultAsync(s => s.Id == id);
             if (existed is null) return NotFound();
 
-            if (!ModelState.IsValid)
-            {
-                return View(existed);
-            }
-
-            if (slide.Photo is not null)
+            if (slideVM.Photo is not null)
             {
                 bool result = _context.Slides.Any(s => s.Order < 0);
                 if (result)
                 {
                     ModelState.AddModelError("Order", "Order can't be smaller than 0.");
-                    return View(existed);
+                    return View(slideVM);
                 }
 
-                if (!slide.Photo.ValidateType())
+                if (!slideVM.Photo.ValidateType())
                 {
                     ModelState.AddModelError("Photo", "You need to choose image file.");
-                    return View(existed);
+                    return View(slideVM);
                 }
-                if (!slide.Photo.ValidateSize(2 * 1024))
+                if (!slideVM.Photo.ValidateSize(2 * 1024))
                 {
                     ModelState.AddModelError("Photo", "You need to choose up to 2MB.");
-                    return View(existed);
+                    return View(slideVM);
                 }
-                string newimage = await slide.Photo.CreateFile(_env.WebRootPath, "assets", "images", "slider");
+                string newimage = await slideVM.Photo.CreateFile(_env.WebRootPath, "assets", "images", "slider");
                 existed.ImageUrl.DeleteFile(_env.WebRootPath, "assets", "images", "slider");
                 existed.ImageUrl = newimage;
             }
 
-            existed.Title = slide.Title;
-            existed.Subtitle = slide.Subtitle;
-            existed.Description = slide.Description;
-            existed.Order = slide.Order;
+            existed.Title = slideVM.Title;
+            existed.Subtitle = slideVM.Subtitle;
+            existed.Description = slideVM.Description;
+            existed.Order = slideVM.Order;
 
             await _context.SaveChangesAsync();
 
