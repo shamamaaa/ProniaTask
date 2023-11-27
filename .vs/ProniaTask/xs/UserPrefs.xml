@@ -1,9 +1,26 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Product/Detail.cshtml">
+  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Slide/Update.cshtml">
     <Files>
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/ProductController.cs" Line="146" Column="42" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Detail.cshtml" Line="40" Column="1" />
-      <File FileName="ProniaTask/Views/Product/Detail.cshtml" Line="218" Column="1" />
+      <File FileName="ProniaTask/Models/Product.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/ProductController.cs" Line="262" Column="10" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Create.cshtml" Line="37" Column="86" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Update.cshtml" Line="53" Column="53" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Product/CreateProductVM.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Product/UpdateProductVM.cs" Line="34" Column="45" />
+      <File FileName="ProniaTask/Program.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/_ViewStart.cshtml" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/CategoryController.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Color/CreateColorVM.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Color/UpdateColorVM.cs" Line="1" Column="1" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Category/CreateCategoryVM.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Category/UpdateCategoryVM.cs" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/ColorController.cs" Line="1" Column="1" />
+      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" Line="284" Column="31" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Shared/_Layout.cshtml" Line="193" Column="26" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Slide/Create.cshtml" Line="1" Column="1" />
+      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Slide/Update.cshtml" Line="17" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,16 +30,24 @@
               <Node name="Areas" expanded="True">
                 <Node name="ProniaAdmin" expanded="True">
                   <Node name="Controllers" expanded="True" />
+                  <Node name="ViewModels" expanded="True">
+                    <Node name="Color" expanded="True" />
+                    <Node name="Product" expanded="True" />
+                    <Node name="Size" expanded="True" />
+                    <Node name="Slide" expanded="True" />
+                  </Node>
                   <Node name="Views" expanded="True">
-                    <Node name="Product" expanded="True">
-                      <Node name="Detail.cshtml" selected="True" />
+                    <Node name="Product" expanded="True" />
+                    <Node name="Slide" expanded="True">
+                      <Node name="Update.cshtml" selected="True" />
                     </Node>
                   </Node>
                 </Node>
               </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Product" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -30,11 +55,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using ProniaTask.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProniaTask.Areas.ProniaAdmin.ViewModels
 {
@@ -22,6 +22,17 @@ namespace ProniaTask.Areas.ProniaAdmin.ViewModels
         public string SKU { get; set; }
         [Required]
         public int? CategoryId { get; set; }
+
+        public List<int> TagIds { get; set; }
+        public List<int> ColorIds { get; set; }
+        public List<int> SizeIds { get; set; }
+
+        public SelectList? Categories { get; set; }
+        public SelectList? Colors { get; set; }
+        public SelectList? Sizes { get; set; }
+        public SelectList? Tags { get; set; }
+
+
     }
 }
 
