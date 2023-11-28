@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ProniaTask.Areas.ProniaAdmin.ViewModels;
 using ProniaTask.DAL;
 using ProniaTask.Models;
+using ProniaTask.Utilities.Extensions;
 using ProniaTask.ViewModels;
 
 namespace ProniaTask.Areas.ProniaAdmin.Controllers
@@ -47,13 +48,15 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 GetSelectList(ref productVM);
                 return View(productVM);
             }
+
             bool result = await _context.Categories.AnyAsync(c => c.Id == productVM.CategoryId);
             if (!result)
             {
                 GetSelectList(ref productVM);
-                ModelState.AddModelError("CategoryId", "Category not found, choose another one.");
+                ModelState.AddModelError("CategoryId", "Category not found");
                 return View();
             }
+
 
             result = await _context.Products.AnyAsync(c => c.Name == productVM.Name);
             if (result)
@@ -62,6 +65,15 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 ModelState.AddModelError("Name", "Product already exists");
                 return View();
             }
+
+            result = await _context.Products.AnyAsync(c => c.Price < 0);
+            if (result)
+            {
+                GetSelectList(ref productVM);
+                ModelState.AddModelError("Price", "Price can't be smaller than 0");
+                return View();
+            }
+
 
             foreach (int tagid in productVM.TagIds)
             {
@@ -74,6 +86,68 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 }
             }
 
+            foreach (int colorid in productVM.ColorIds)
+            {
+                bool colorresult = await _context.Colors.AnyAsync(x => x.Id == colorid);
+                if (!colorresult)
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("ColorIds", "Wrong color information input.");
+                    return View();
+                }
+            }
+
+            foreach (int sizeid in productVM.SizeIds)
+            {
+                bool sizeresult = await _context.Sizes.AnyAsync(x => x.Id == sizeid);
+                if (!sizeresult)
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("SizeIds", "Wrong size information input.");
+                    return View();
+                }
+            }
+
+
+            if (!productVM.MainPhoto.ValidateType())
+            {
+                GetSelectList(ref productVM);
+                ModelState.AddModelError("MainPhoto", "Wrong file type.");
+                return View();
+            }
+            if (!productVM.MainPhoto.ValidateSize(2*1024))
+            {
+                GetSelectList(ref productVM);
+                ModelState.AddModelError("MainPhoto", "Wrong file size.You need to choose up to 2mb.");
+                return View();
+            }
+
+
+            if (!productVM.HoverPhoto.ValidateType())
+            {
+                GetSelectList(ref productVM);
+                ModelState.AddModelError("HoverPhoto", "Wrong file type.");
+                return View();
+            }
+            if (!productVM.HoverPhoto.ValidateSize(2 * 1024))
+            {
+                GetSelectList(ref productVM);
+                ModelState.AddModelError("HoverPhoto", "Wrong file size.You need to choose up to 2mb.");
+                return View();
+            }
+
+            ProductImage image = new ProductImage
+            {
+                IsPrimary = true,
+                Url = await productVM.MainPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images")
+            };
+
+            ProductImage hoverimage = new ProductImage
+            {
+                IsPrimary = false,
+                Url = await productVM.HoverPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images")
+            };
+
             Product product = new Product
             {
                 Name = productVM.Name,
@@ -83,7 +157,8 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 Description = productVM.Description,
                 ProductTags = new List<ProductTag>(),
                 ProductSizes = new List<ProductSize>(),
-                ProductColors = new List<ProductColor>()
+                ProductColors = new List<ProductColor>(),
+                ProductImages = new List<ProductImage> {hoverimage,image }
             };
 
 
@@ -121,6 +196,28 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                     ColorId = colorid,
                 };
                 product.ProductColors.Add(productColor);
+            }
+
+            TempData["Message"] = "";
+
+            foreach (IFormFile photo  in productVM.Photos)
+            {
+                if (!photo.ValidateType())
+                {
+                    TempData["Message"] += $"<p class=\"text-danger\">{photo.FileName}'s  type is not suitable<p/>";
+                    continue;
+                }
+                if (!photo.ValidateSize(2 * 1024))
+                {
+                    TempData["Message"] += $"<p class=\"text-danger\">{photo.FileName}'s  size is not suitable<p/>";
+                    continue;
+                }
+
+                product.ProductImages.Add(new ProductImage
+                {
+                    IsPrimary = null,
+                    Url = await photo.CreateFile(_env.WebRootPath, "assets", "images", "website-images")
+                });
             }
 
             await _context.Products.AddAsync(product);
@@ -181,71 +278,73 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 return View();
             }
 
+            ////////
 
-            foreach (ProductTag pt in existed.ProductTags)
+            existed.ProductTags.RemoveAll(pt => !productVM.TagIds.Exists(tId => tId == pt.TagId));
+
+            List<int> tagcreatable = productVM.TagIds.Where(tId => !existed.ProductTags.Exists(pt => pt.TagId == tId)).ToList();
+
+            foreach (int tagid in tagcreatable)
             {
-                if (productVM.TagIds.Exists(t=>t==pt.TagId))
+                bool tagresult = await _context.Tags.AnyAsync(t => t.Id == tagid);
+
+                if (!tagresult)
                 {
-                    _context.ProductTags.Remove(pt);
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("TagIds", "Tag not found.");
+                    return View();
                 }
-            }
-
-
-            foreach (int tagid in productVM.TagIds)
-            {
-                if (!existed.ProductTags.Any(pt=>pt.TagId == tagid))
+                existed.ProductTags.Add(new ProductTag
                 {
-                    existed.ProductTags.Add(new ProductTag
-                    {
-                        TagId = tagid
-                    });
-                }
-            }
-
-            ///////
-
-            foreach (ProductColor pc in existed.ProductColors)
-            {
-                if (productVM.ColorIds.Exists(t => t == pc.ColorId))
-                {
-                    _context.ProductColors.Remove(pc);
-                }
-            }
-
-
-            foreach (int colorid in productVM.ColorIds)
-            {
-                if (!existed.ProductColors.Any(pt => pt.ColorId == colorid))
-                {
-                    existed.ProductColors.Add(new ProductColor
-                    {
-                        ColorId = colorid
-                    });
-                }
+                    TagId = tagid
+                });
             }
 
             ///////
 
-            foreach (ProductSize pt in existed.ProductSizes)
+            existed.ProductColors.RemoveAll(pc=> !productVM.ColorIds.Exists(cId => cId == pc.ColorId));
+
+            List<int> colorcreatable = productVM.ColorIds.Where(cId => !existed.ProductColors.Exists(pc => pc.ColorId == cId)).ToList();
+
+            foreach (int colorid in colorcreatable)
             {
-                if (productVM.SizeIds.Exists(t => t == pt.SizeId))
+                bool colorresult = await _context.Colors.AnyAsync(c => c.Id == colorid);
+
+                if (!colorresult)
                 {
-                    _context.ProductSizes.Remove(pt);
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("ColorIds", "Color not found.");
+                    return View();
                 }
+                existed.ProductColors.Add(new ProductColor
+                {
+                    ColorId = colorid
+                });
+            }
+
+            ///////
+            existed.ProductSizes.RemoveAll(pc => !productVM.SizeIds.Exists(cId => cId == pc.SizeId));
+
+            List<int> sizecreatable = productVM.SizeIds.Where(cId => !existed.ProductSizes.Exists(pc => pc.SizeId == cId)).ToList();
+
+            foreach (int sizeid in sizecreatable)
+            {
+                bool sizeresult = await _context.Sizes.AnyAsync(c => c.Id == sizeid);
+
+                if (!sizeresult)
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("SizeIds", "Size not found.");
+                    return View();
+                }
+                existed.ProductSizes.Add(new ProductSize
+                {
+                    SizeId = sizeid
+                });
             }
 
 
-            foreach (int sizeid in productVM.SizeIds)
-            {
-                if (!existed.ProductSizes.Any(pt => pt.SizeId == sizeid))
-                {
-                    existed.ProductSizes.Add(new ProductSize
-                    {
-                        SizeId = sizeid
-                    });
-                }
-            }
-
+            ///////
 
             existed.Name = productVM.Name;
             existed.Price = productVM.Price;

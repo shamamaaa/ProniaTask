@@ -27,28 +27,28 @@
                         <div class="swiper-container single-product-slider">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==true).Url"
+                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==true)?.Url"
                                        class="single-img gallery-popup">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==true).Url"
+                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==true)?.Url"
                                              alt="Product Image" />
                                     </a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==false).Url"
+                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==false)?.Url"
                                        class="single-img gallery-popup">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==false).Url"
+                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==false)?.Url"
                                              alt="Product Image" />
                                     </a>
                                 </div>
                                 @foreach (var item in Model.Product.ProductImages.Where(img => img.ProductId == Model.Product.Id && img.IsPrimary == null))
                                 {
                                     <div class="swiper-slide">
-                                        <a href="~/assets/images/website-images/@item.Url"
+                                        <a href="~/assets/images/website-images/@item?.Url"
                                            class="single-img gallery-popup">
                                             <img class="img-full"
-                                                 src="~/assets/images/website-images/@item.Url"
+                                                 src="~/assets/images/website-images/@item?.Url"
                                                  alt="Product Image" />
                                         </a>
                                     </div>
@@ -60,19 +60,19 @@
                                 <div class="swiper-wrapper">
                                     <a href="#" class="swiper-slide">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==true).Url"
+                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==true)?.Url"
                                              alt="Product Thumnail" />
                                     </a>
                                     <a href="#" class="swiper-slide">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==false).Url"
+                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(img=>img.ProductId==Model.Product.Id && img.IsPrimary==false)?.Url"
                                              alt="Product Thumnail" />
                                     </a>
                                     @foreach (var item in Model.Product.ProductImages.Where(img => img.ProductId == Model.Product.Id && img.IsPrimary == null))
                                     {
                                         <a href="#" class="swiper-slide">
                                             <img class="img-full"
-                                                 src="~/assets/images/website-images/@item.Url"
+                                                 src="~/assets/images/website-images/@item?.Url"
                                                  alt="Product Thumnail" />
                                         </a>
                                     }
@@ -496,10 +496,10 @@
                                     <div class="product-img">
                                         <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">
                                             <img style="width: 250px; height: 250px; object-fit: cover;" class="primary-img"
-                                                 src="~/assets/images/website-images/@item.ProductImages.FirstOrDefault(img=>img.ProductId==item.Id && img.IsPrimary==true).Url"
+                                                 src="~/assets/images/website-images/@item.ProductImages.FirstOrDefault(img=>img.ProductId==item.Id && img.IsPrimary==true)?.Url"
                                                  alt="Product Images" />
                                             <img style="width: 250px; height: 250px; object-fit: cover;" class="secondary-img"
-                                                 src="~/assets/images/website-images/@item.ProductImages.FirstOrDefault(img=>img.ProductId==item.Id && img.IsPrimary==false).Url"
+                                                 src="~/assets/images/website-images/@item.ProductImages.FirstOrDefault(img=>img.ProductId==item.Id && img.IsPrimary==false)?.Url"
                                                  alt="Product Images" />
                                         </a>
                                         <div class="product-add-action">
