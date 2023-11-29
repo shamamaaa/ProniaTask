@@ -230,7 +230,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
-            Product existed = await _context.Products.Include(x=>x.ProductTags).Include(y=>y.ProductColors).Include(z=>z.ProductSizes).FirstOrDefaultAsync(p => p.Id == id);
+            Product existed = await _context.Products.Include(x => x.ProductTags).Include(y => y.ProductColors).Include(z => z.ProductSizes).Include(p => p.ProductImages).FirstOrDefaultAsync(p => p.Id == id);
             if (existed is null) return NotFound();
 
             UpdateProductVM productVM = new UpdateProductVM
@@ -243,7 +243,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 TagIds= existed.ProductTags.Select(pt=>pt.TagId).ToList(),
                 ColorIds = existed.ProductColors.Select(pt => pt.ColorId).ToList(),
                 SizeIds = existed.ProductSizes.Select(pt => pt.SizeId).ToList(),
-            
+                ProductImages=existed.ProductImages
             };
             GetSelectList(ref productVM);
             return View(productVM);
@@ -252,22 +252,30 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateProductVM productVM)
         {
+            Product existed = await _context.Products
+                .Include(p=>p.ProductTags)
+                .Include(x=>x.ProductSizes)
+                .Include(y=>y.ProductColors)
+                .Include(pi=>pi.ProductImages)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            productVM.ProductImages = existed.ProductImages;
+            if (existed is null) return NotFound();
+
             if (!ModelState.IsValid)
             {
                 GetSelectList(ref productVM);
 
-                return View();
+                return View(productVM);
             }
 
-            Product existed = await _context.Products.Include(p=>p.ProductTags).Include(x=>x.ProductSizes).Include(y=>y.ProductColors).FirstOrDefaultAsync(e => e.Id == id);
-            if (existed is null) return NotFound();
 
             bool result = await _context.Products.AnyAsync(c => c.Name == productVM.Name && c.Id != id);
             if (result)
             {
                 GetSelectList(ref productVM);
                 ModelState.AddModelError("Name", "Product already exists");
-                return View();
+                return View(productVM);
             }
 
             bool result1 = await _context.Categories.AnyAsync(c => c.Id == productVM.CategoryId);
@@ -275,7 +283,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             {
                 GetSelectList(ref productVM);
                 ModelState.AddModelError("CategoryId", "Category not found, choose another one.");
-                return View();
+                return View(productVM);
             }
 
             ////////
@@ -302,7 +310,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
 
             ///////
 
-            existed.ProductColors.RemoveAll(pc=> !productVM.ColorIds.Exists(cId => cId == pc.ColorId));
+            existed.ProductColors.RemoveAll(pc => !productVM.ColorIds.Exists(cId => cId == pc.ColorId));
 
             List<int> colorcreatable = productVM.ColorIds.Where(cId => !existed.ProductColors.Exists(pc => pc.ColorId == cId)).ToList();
 
@@ -346,6 +354,105 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
 
             ///////
 
+
+            if (productVM.MainPhoto is not null)
+            {
+                if (!productVM.MainPhoto.ValidateType())
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("MainPhoto", "File type is not valid");
+                    return View(productVM);
+                }
+                if (!productVM.MainPhoto.ValidateSize(2*1024))
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("MainPhoto", "Size is not valid, you need to choose up to 2MB");
+                    return View(productVM);
+                }
+            }
+
+            if (productVM.HoverPhoto is not null)
+            {
+                if (!productVM.HoverPhoto.ValidateType())
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("HoverPhoto", "File type is not valid");
+                    return View(productVM);
+                }
+                if (!productVM.HoverPhoto.ValidateSize(2 * 1024))
+                {
+                    GetSelectList(ref productVM);
+                    ModelState.AddModelError("HoverPhoto", "Size is not valid, you need to choose up to 2MB");
+                    return View(productVM);
+                }
+            }
+
+            if (productVM.MainPhoto is not null)
+            {
+                string filename = await productVM.MainPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images");
+                ProductImage mainimg = existed.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true);
+                mainimg.Url.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+                _context.ProductImages.Remove(mainimg);
+
+                existed.ProductImages.Add(new ProductImage
+                {
+                    IsPrimary = true,
+                    Url = filename
+                });
+            }
+
+            if (productVM.HoverPhoto is not null)
+            {
+                string filename = await productVM.HoverPhoto.CreateFile(_env.WebRootPath, "assets", "images", "website-images");
+                ProductImage hoverimg = existed.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
+                hoverimg.Url.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+                _context.ProductImages.Remove(hoverimg);
+
+                existed.ProductImages.Add(new ProductImage
+                {
+                    IsPrimary = false,
+                    Url = filename
+                });
+            }
+
+            if (productVM.ImageIds is null)
+            {
+                productVM.ImageIds = new List<int>();
+            }
+
+            List<ProductImage> removable = existed.ProductImages.Where(pi => !productVM.ImageIds.Exists(imgid => imgid == pi.Id)&& pi.IsPrimary == null).ToList();
+            foreach (var pig in removable)
+            {
+                pig.Url.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+                existed.ProductImages.Remove(pig);
+            }
+
+            TempData["Message"] = "";
+
+            if (productVM.Photos is not null)
+            {
+                foreach (IFormFile photo in productVM.Photos)
+                {
+                    if (!photo.ValidateType())
+                    {
+                        TempData["Message"] += $"<p class=\"text-danger\">{photo.FileName}'s  type is not suitable<p/>";
+                        continue;
+                    }
+                    if (!photo.ValidateSize(2 * 1024))
+                    {
+                        TempData["Message"] += $"<p class=\"text-danger\">{photo.FileName}'s  size is not suitable<p/>";
+                        continue;
+                    }
+
+                    existed.ProductImages.Add(new ProductImage
+                    {
+                        IsPrimary = null,
+                        Url = await photo.CreateFile(_env.WebRootPath, "assets", "images", "website-images")
+                    });
+                }
+            }
+
+
             existed.Name = productVM.Name;
             existed.Price = productVM.Price;
             existed.SKU = productVM.SKU;
@@ -356,6 +463,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         public async Task<IActionResult> Detail(int id)
         {
@@ -390,9 +498,11 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
                 .ThenInclude(c => c.Color)
                 .FirstOrDefaultAsync(x=>x.Id==id);
 
-            if (product is null)
+            if (product is null) return NotFound();
+
+            foreach (var item in product.ProductImages)
             {
-                return NotFound();
+                item.Url.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
             }
 
             _context.Products.Remove(product);
