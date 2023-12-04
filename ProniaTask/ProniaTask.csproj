@@ -42,6 +42,9 @@
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Product\" />
     <None Remove="Views\Shared\Components\Header\" />
+    <None Remove="ViewModels\Account\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Utilities\Enum\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -82,6 +85,9 @@
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Product\" />
     <Folder Include="Views\Shared\Components\Header\" />
+    <Folder Include="ViewModels\Account\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Utilities\Enum\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
@@ -94,5 +100,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.25" />
   </ItemGroup>
 </Project>

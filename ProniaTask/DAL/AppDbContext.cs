@@ -2,10 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.Models;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProniaTask.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
         {

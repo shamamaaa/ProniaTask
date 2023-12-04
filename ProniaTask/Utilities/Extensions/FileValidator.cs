@@ -59,6 +59,14 @@ namespace ProniaTask.Utilities.Extensions
             string filename = Guid.NewGuid().ToString() + file.FileName.Substring(index);
             return filename;
         }
+
+        public static string Capitalize(this string text)
+        {
+            text = text.Trim();
+            text = char.ToUpper(text[0]) + text.Substring(1).ToLower();
+
+            return text;
+        }
     }
 }
 

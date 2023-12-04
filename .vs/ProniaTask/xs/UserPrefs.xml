@@ -6,13 +6,31 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Views/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="ProniaTask/Views/Account/Register.cshtml" Line="32" Column="65" />
+      <File FileName="ProniaTask/Controllers/AccountController.cs" Line="69" Column="1" />
+      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" Line="151" Column="50" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask">
+          <Node name="ProniaTask" expanded="True">
             <Node name="ProniaTask">
-              <Node name="Views" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Utilities" expanded="True">
+                <Node name="Enum" expanded="True" />
+                <Node name="Extensions" expanded="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True">
+                <Node name="Account" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True" />
+                <Node name="Shared">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
