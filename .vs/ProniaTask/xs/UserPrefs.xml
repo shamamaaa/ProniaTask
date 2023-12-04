@@ -1,55 +1,22 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Product/Update.cshtml">
-    <Files>
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Controllers/ProductController.cs" Line="510" Column="1" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Update.cshtml" Line="37" Column="70" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/ViewModels/Product/UpdateProductVM.cs" Line="28" Column="48" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Create.cshtml" Line="1" Column="1" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Shared/_Layout.cshtml" Line="223" Column="12" />
-    </Files>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask" expanded="True">
+          <Node name="ProniaTask">
             <Node name="ProniaTask">
-              <Node name="Areas" expanded="True">
-                <Node name="ProniaAdmin" expanded="True">
-                  <Node name="Controllers" expanded="True" />
-                  <Node name="ViewModels" expanded="True">
-                    <Node name="Category" expanded="True" />
-                    <Node name="Product" expanded="True" />
-                  </Node>
-                  <Node name="Views" expanded="True">
-                    <Node name="Category" expanded="True" />
-                    <Node name="Product" expanded="True">
-                      <Node name="Update.cshtml" selected="True" />
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="ViewModels" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Product" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="assets" expanded="True">
-                  <Node name="images" expanded="True">
-                    <Node name="website-images" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
+              <Node name="Views" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
