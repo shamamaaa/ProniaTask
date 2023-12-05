@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.Areas.ProniaAdmin.ViewModels;
@@ -20,6 +21,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index()
         {
             List<Category> categories = await _context.Categories.Include(c => c.Products).ToListAsync();
@@ -27,11 +29,13 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(categories);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateCategoryVM categoryVM)
         {
@@ -57,6 +61,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
@@ -71,7 +76,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(categoryVM);
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateCategoryVM categoryVM)
         {
@@ -97,7 +102,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -112,6 +117,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Detail(int id)
         {
             var category = await _context.Categories.Include(c=>c.Products).ThenInclude(p=>p.ProductImages).FirstOrDefaultAsync(x => x.Id == id);

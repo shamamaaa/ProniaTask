@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.Areas.ProniaAdmin.ViewModels;
@@ -25,17 +26,20 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             _env = env;
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index()
         {
             List<Slide> slides = await _context.Slides.ToListAsync();
             return View(slides);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateSlideVM slideVM)
         {
@@ -79,7 +83,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
@@ -98,6 +102,8 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
 
             return View(slideVM);
         }
+
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateSlideVM slideVM)
         {
@@ -144,7 +150,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id <=0) return BadRequest();
@@ -160,6 +166,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Detail(int id)
         {
             Slide slide = await _context.Slides.FirstOrDefaultAsync(x => x.Id == id);

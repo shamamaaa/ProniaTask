@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -25,12 +26,14 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             _env = env;
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index()
         {
             List<Product> products = await _context.Products.Include(p=>p.Category).Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary==true)).ToListAsync();
             return View(products);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
             CreateProductVM productVM = new ();
@@ -40,6 +43,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(productVM);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductVM productVM)
         {
@@ -226,7 +230,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
 
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
@@ -249,6 +253,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(productVM);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateProductVM productVM)
         {
@@ -464,7 +469,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Detail(int id)
         {
             if (id <= 0) return BadRequest();
@@ -482,6 +487,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();

@@ -21,12 +21,12 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 
 builder.Services.AddScoped<LayoutService>();
 var app = builder.Build();
+app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseStaticFiles();
-app.UseRouting();
  
 app.UseEndpoints(endpoints =>
 endpoints.MapControllerRoute(

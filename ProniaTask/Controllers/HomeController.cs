@@ -15,7 +15,6 @@ namespace ProniaTask.Controllers
 
         private readonly AppDbContext _context;
 
-
         public HomeController(AppDbContext context)
         {
             _context = context;
@@ -34,6 +33,9 @@ namespace ProniaTask.Controllers
             };
             return View(vm);
         }
+
+
+
     }
 }
 

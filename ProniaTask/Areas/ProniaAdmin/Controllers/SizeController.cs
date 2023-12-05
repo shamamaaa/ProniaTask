@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.Areas.ProniaAdmin.ViewModels;
@@ -19,7 +20,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             _context = context;
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index()
         {
             List<Size> sizes = await _context.Sizes.Include(s => s.ProductSizes).ThenInclude(p => p.Product).ToListAsync();
@@ -27,11 +28,13 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(sizes);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateSizeVM sizeVM)
         {
@@ -58,6 +61,8 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
@@ -74,7 +79,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(sizeVM);
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateSizeVM sizeVM)
         {
@@ -100,7 +105,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -115,6 +120,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Detail(int id)
         {
             var size = await _context.Sizes.Include(s => s.ProductSizes).ThenInclude(p=> p.Product).ThenInclude(pi=>pi.ProductImages).FirstOrDefaultAsync(x => x.Id == id);

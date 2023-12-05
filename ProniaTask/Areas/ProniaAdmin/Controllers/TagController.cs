@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.Areas.ProniaAdmin.ViewModels;
@@ -20,6 +21,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index()
         {
             List<Tag> tags = await _context.Tags.Include(t => t.ProductTags).ToListAsync();
@@ -27,11 +29,13 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(tags);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateTagVM tagVM)
         {
@@ -58,7 +62,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
@@ -75,7 +79,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return View(tagVM);
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateTagVM tagVM)
         {
@@ -101,6 +105,8 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -115,6 +121,7 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Detail(int id)
         {
             Tag tag = await _context.Tags.Include(c => c.ProductTags).ThenInclude(p => p.Product).ThenInclude(i=>i.ProductImages).FirstOrDefaultAsync(x => x.Id == id);

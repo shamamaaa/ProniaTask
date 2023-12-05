@@ -88,12 +88,29 @@
                                     </button>
                                     <ul class="dropdown-menu"
                                         aria-labelledby="settingButton">
-                                        <li>
-                                            <a class="dropdown-item" href="my-account.html">My account</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                        </li>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" href="my-account.html">@User.Identity.Name</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" asp-action="logout" asp-controller="account">Logout</a>
+                                            </li>
+
+                                            if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" asp-action="index" asp-controller="home" asp-area="ProniaAdmin">Admin panel</a>
+                                                </li>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-action="login" asp-controller="account" asp-route-returnUrl="@Context.Request.Path.Value">Login</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                                 <li class="d-none d-lg-block">
@@ -104,7 +121,7 @@
                                 <li class="minicart-wrap me-3 me-lg-0">
                                     <a href="#miniCart" class="minicart-btn toolbar-btn">
                                         @Html.Raw( Model.Settings["BagIcon"])
-                                        @*<span class="quantity">@Model.BasketItems.Count</span>*@
+                                        <span class="quantity">@Model.BasketItems.Count</span>
                                     </a>
                                 </li>
                                 <li class="mobile-menu_wrap d-block d-lg-none">
@@ -399,12 +416,21 @@
                                     </button>
                                     <ul class="dropdown-menu"
                                         aria-labelledby="stickysettingButton">
-                                        <li>
-                                            <a class="dropdown-item" href="my-account.html">My account</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                        </li>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" href="my-account.html">@User.Identity.Name</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" asp-action="logout" asp-controller="account">Logout</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-action="login" asp-controller="account" asp-route-returnUrl="@Context.Request.Path.Value">Login</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                                 <li class="d-none d-lg-block">
@@ -415,7 +441,7 @@
                                 <li class="minicart-wrap me-3 me-lg-0">
                                     <a href="#miniCart" class="minicart-btn toolbar-btn">
                                         @Html.Raw( Model.Settings["BagIcon"])
-                                        @*<span class="quantity">@Model.BasketItems.Count</span>*@
+                                        <span class="quantity">@Model.BasketItems.Count</span>
                                     </a>
                                 </li>
                                 <li class="mobile-menu_wrap d-block d-lg-none">
@@ -482,12 +508,21 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="settingButtonTwo">
-                                <li>
-                                    <a class="dropdown-item" href="my-account.html">My account</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                </li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="my-account.html">@User.Identity.Name</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-action="logout" asp-controller="account">Logout</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-action="login" asp-controller="account" asp-route-returnUrl="@Context.Request.Path.Value">Login</a>
+                                    </li>
+                                }
                             </ul>
                         </li>
                         <li>
@@ -776,9 +811,9 @@
                     </a>
                 </div>
                 <ul class="minicart-list">
-                    @*@foreach (var item in Model.BasketItems)
+                    @foreach (var item in Model.BasketItems)
                     {
-                        total += item.SubTotal;
+                        total += item.Subtotal;
                         <li class="minicart-product">
                             <a class="product-item_remove" asp-action="remove" asp-controller="basket" asp-route-id="@item.Id">
                                 <i class="pe-7s-close"
@@ -789,7 +824,7 @@
                                    data-tippy-arrow="true"
                                    data-tippy-theme="sharpborder"></i>
                             </a>
-                            <a asp-action="details" asp-controller="products" asp-route-id="@item.Id"
+                            <a asp-action="detail" asp-controller="product" asp-route-id="@item.Id"
                                class="product-item_img">
                                 <img class="img-full"
                                      src="~/assets/images/website-images/@item.Image"
@@ -797,17 +832,17 @@
                             </a>
                             <div class="product-item_content">
                                 <a class="product-item_title"
-                                   asp-action="details" asp-controller="products" asp-route-id="@item.Id">@item.Name</a>
+                                   asp-action="detail" asp-controller="product" asp-route-id="@item.Id">@item.Name</a>
                                 <span class="product-item_quantity">@item.Count x $@item.Price</span>
                             </div>
                         </li>
 
-                    }*@
+                    }
                   
                 </ul>
             </div>
             <div class="minicart-item_total">
-                <span>Subtotal</span>
+                <span>Total</span>
                 <span class="ammount">$@total</span>
             </div>
             <div class="group-btn_wrap d-grid gap-2">

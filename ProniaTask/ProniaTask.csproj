@@ -45,6 +45,7 @@
     <None Remove="ViewModels\Account\" />
     <None Remove="Views\Account\" />
     <None Remove="Utilities\Enum\" />
+    <None Remove="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -88,6 +89,7 @@
     <Folder Include="ViewModels\Account\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Utilities\Enum\" />
+    <Folder Include="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
@@ -101,5 +103,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.25" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

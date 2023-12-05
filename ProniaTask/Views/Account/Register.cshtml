@@ -21,8 +21,8 @@
     </div>
     <div class="login-register-area section-space-y-axis-100">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 pt-5 pt-lg-0 justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 pt-5 pt-lg-0">
                     <form method="post">
                         <div class="login-form">
                             <h4 class="login-title">Register</h4>
@@ -71,10 +71,13 @@
                                     <input asp-for="ConfirmPassword" placeholder="ConfirmPassword" />
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <button class="btn btn-custom-size lg-size btn-pronia-primary">
                                         Register
                                     </button>
+                                </div>
+                                <div class="col-6 text-success" style="margin-top:15px;">
+                                    <a asp-action="login" asp-controller="account">You have an account</a>
                                 </div>
                             </div>
                         </div>
