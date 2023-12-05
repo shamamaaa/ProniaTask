@@ -1,39 +1,22 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Views/Account/Register.cshtml">
-    <Files>
-      <File FileName="ProniaTask/Controllers/AccountController.cs" Line="76" Column="1" />
-      <File FileName="ProniaTask/Utilities/Extensions/FileValidator.cs" />
-      <File FileName="ProniaTask/Utilities/Enum/Gender.cs" />
-      <File FileName="ProniaTask/ViewModels/Account/RegisterVM.cs" />
-      <File FileName="ProniaTask/Views/Account/Login.cshtml" />
-      <File FileName="ProniaTask/ViewModels/Account/LoginVM.cs" />
-      <File FileName="ProniaTask/Program.cs" />
-      <File FileName="ProniaTask/Utilities/Enum/Role.cs" />
-      <File FileName="ProniaTask/Models/AppUser.cs" />
-      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" />
-      <File FileName="ProniaTask/Views/Account/Register.cshtml" Line="30" Column="99" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ProniaTask" expanded="True">
-            <Node name="ProniaTask" expanded="True">
+          <Node name="ProniaTask">
+            <Node name="ProniaTask">
+              <Node name="Areas" expanded="True" />
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Utilities" expanded="True">
-                <Node name="Extensions" expanded="True" />
-              </Node>
-              <Node name="ViewModels" expanded="True">
-                <Node name="Account" expanded="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True">
-                  <Node name="Register.cshtml" selected="True" />
+              <Node name="Views">
+                <Node name="Basket" expanded="True" />
+                <Node name="Shared">
+                  <Node name="Components" expanded="True">
+                    <Node name="Header" expanded="True">
+                      <Node name="Default.cshtml" selected="True" />
+                    </Node>
+                    <Node name="Product" expanded="True" />
+                  </Node>
                 </Node>
-                <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True" />
             </Node>
@@ -42,8 +25,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
 </Properties>
