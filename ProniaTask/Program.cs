@@ -21,6 +21,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<LayoutService>();
+builder.Services.AddSession(options =>
+options.IdleTimeout = TimeSpan.FromSeconds(69)
+);
+
 var app = builder.Build();
 app.UseRouting();
 

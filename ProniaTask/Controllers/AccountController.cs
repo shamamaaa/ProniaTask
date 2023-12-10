@@ -58,6 +58,7 @@ namespace ProniaTask.Controllers
 
             await _manager.AddToRoleAsync(user, Role.Member.ToString());
             await _signInManager.SignInAsync(user,false);
+            Response.Cookies.Delete("Basket");
             return RedirectToAction("Index","Home");
         }
 
@@ -112,6 +113,7 @@ namespace ProniaTask.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            Response.Cookies.Delete("Basket");
             return Redirect(returnUrl);
 
         }

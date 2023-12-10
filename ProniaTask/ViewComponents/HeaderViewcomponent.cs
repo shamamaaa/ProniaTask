@@ -63,7 +63,7 @@ namespace ProniaTask.ViewComponents
             {
                 if (_accessor.HttpContext.Request.Cookies["Basket"] is not null)
                 {
-                    List<BasketCookieItemVM> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVM>>(Request.Cookies["Basket"]);
+                    List<BasketCookieItemVM> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVM>>(_accessor.HttpContext.Request.Cookies["Basket"]);
 
                     foreach (var basketcookieitem in basket)
                     {
