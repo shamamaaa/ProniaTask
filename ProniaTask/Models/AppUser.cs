@@ -12,6 +12,8 @@ namespace ProniaTask.Models
 
         public Gender Gender { get; set; }
 
+        public List<BasketItem> BasketItems { get; set; }
+
     }
 }
 

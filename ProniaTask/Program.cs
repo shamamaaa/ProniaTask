@@ -16,9 +16,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
     option.User.RequireUniqueEmail = true;
     option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
 }
-).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders(); 
+).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<LayoutService>();
 var app = builder.Build();
 app.UseRouting();
