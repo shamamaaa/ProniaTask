@@ -45,7 +45,7 @@ namespace ProniaTask.ViewComponents
 
             if (_accessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                AppUser? user = await _usermanager.Users.Include(u => u.BasketItems).ThenInclude(bi => bi.Product).ThenInclude(p => p.ProductImages.Where(pi => pi.IsPrimary == true)).FirstOrDefaultAsync(u => u.Id == _accessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                AppUser? user = await _usermanager.Users.Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).ThenInclude(bi => bi.Product).ThenInclude(p => p.ProductImages.Where(pi => pi.IsPrimary == true)).FirstOrDefaultAsync(u => u.Id == _accessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
                 foreach (BasketItem item in user.BasketItems)
                 {
                     basketVM.Add(new BasketItemVM()

@@ -1,45 +1,41 @@
 ﻿<Properties StartupConfiguration="{A1018A25-FB0F-4928-B8A4-1C413A9C460B}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ProniaTask PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Areas/ProniaAdmin/Views/Product/Update.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProniaTask/Controllers/BasketController.cs">
     <Files>
-      <File FileName="ProniaTask/Views/Basket/Index.cshtml" Line="81" Column="130" />
-      <File FileName="ProniaTask/Controllers/BasketController.cs" />
-      <File FileName="ProniaTask/Views/Product/Detail.cshtml" />
-      <File FileName="ProniaTask/Views/Shared/Components/Header/Default.cshtml" />
-      <File FileName="ProniaTask/Services/LayoutService.cs" />
-      <File FileName="ProniaTask/ViewComponents/HeaderViewcomponent.cs" />
-      <File FileName="ProniaTask/ViewModels/HeaderVM.cs" />
-      <File FileName="ProniaTask/Views/Shared/_Layout.cshtml" />
-      <File FileName="ProniaTask/Program.cs" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Shared/_Layout.cshtml" Line="226" Column="1" />
-      <File FileName="ProniaTask/Areas/ProniaAdmin/Views/Product/Update.cshtml" Line="12" Column="1" />
+      <File FileName="ProniaTask/Views/Basket/Checkout.cshtml" Line="86" Column="44" />
+      <File FileName="ProniaTask/Controllers/BasketController.cs" Line="408" Column="45" />
+      <File FileName="ProniaTask/Models/Order.cs" Line="20" Column="1" />
+      <File FileName="ProniaTask/ViewModels/OrderVM.cs" Line="12" Column="1" />
+      <File FileName="ProniaTask/DAL/AppDbContext.cs" Line="1" Column="1" />
+      <File FileName="ProniaTask/ViewComponents/HeaderViewcomponent.cs" Line="48" Column="116" />
+      <File FileName="ProniaTask/Services/EmailService.cs" Line="36" Column="1" />
+      <File FileName="ProniaTask/appsettings.json" Line="18" Column="5" />
+      <File FileName="ProniaTask/Program.cs" Line="33" Column="18" />
+      <File FileName="ProniaTask/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="ProniaTask/Views/Basket/Index.cshtml" Line="129" Column="31" />
+      <File FileName="ProniaTask/Views/Shared/Components/Header/Default.cshtml" Line="854" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProniaTask" expanded="True">
-            <Node name="ProniaTask" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="ProniaAdmin" expanded="True">
-                  <Node name="Views" expanded="True">
-                    <Node name="Product" expanded="True">
-                      <Node name="Update.cshtml" selected="True" />
-                    </Node>
-                    <Node name="Shared" expanded="True" />
-                  </Node>
-                </Node>
+            <Node name="ProniaTask">
+              <Node name="Controllers" expanded="True">
+                <Node name="BasketController.cs" selected="True" />
               </Node>
-              <Node name="Views" expanded="True">
-                <Node name="Basket" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="ViewComponents" expanded="True" />
+              <Node name="Views">
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Product" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>

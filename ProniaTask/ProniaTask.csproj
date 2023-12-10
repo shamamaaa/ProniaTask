@@ -46,6 +46,7 @@
     <None Remove="Views\Account\" />
     <None Remove="Utilities\Enum\" />
     <None Remove="Views\Basket\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -90,6 +91,7 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Utilities\Enum\" />
     <Folder Include="Views\Basket\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
