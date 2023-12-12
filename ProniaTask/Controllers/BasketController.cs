@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using ProniaTask.DAL;
 using ProniaTask.Interfaces;
 using ProniaTask.Models;
+using ProniaTask.Utilities.Exceptions;
 using ProniaTask.ViewModels;
 
 
@@ -86,14 +87,14 @@ namespace ProniaTask.Controllers
         {
             if (id<=0)
             {
-                return BadRequest();
+                throw new WrongRequestException();
             }
 
             Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
             if (product is null)
             {
-                return NotFound();
+                throw new NotFoundException("Oops, no product found :'(");
             }
 
             if (User.Identity.IsAuthenticated)
@@ -101,7 +102,7 @@ namespace ProniaTask.Controllers
                 AppUser user = await _usermanager.Users.Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).FirstOrDefaultAsync(u => u.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 if (user is null)
                 {
-                    return NotFound();
+                    throw new NotFoundException("Oops, no user found :'(");
                 }
 
                 var item = user.BasketItems.FirstOrDefault(bi => bi.ProductId == id);
@@ -170,14 +171,14 @@ namespace ProniaTask.Controllers
         {
             if (id <= 0)
             {
-                return BadRequest();
+                throw new WrongRequestException();
             };
 
             Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
             if (product is null)
             {
-                return NotFound();
+                throw new NotFoundException("Oops, no product found :'(");
             };
             List<BasketCookieItemVM> basket = new List<BasketCookieItemVM>();
 
@@ -207,14 +208,14 @@ namespace ProniaTask.Controllers
         {
                 if (id <= 0)
                 {
-                    return BadRequest();
+                throw new WrongRequestException();
                 };
 
                 Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
                 if (product is null)
                 {
-                    return NotFound();
+                throw new NotFoundException("Oops, no product found :'(");
                 };
                 List<BasketCookieItemVM> basket;
 
@@ -260,14 +261,14 @@ namespace ProniaTask.Controllers
         {
             if (id <= 0)
             {
-                return BadRequest();
+                throw new WrongRequestException();
             }
 
             Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
             if (product is null)
             {
-                return NotFound();
+                throw new NotFoundException("Oops, no product found :'(");
             }
 
             if (User.Identity.IsAuthenticated)
@@ -275,7 +276,7 @@ namespace ProniaTask.Controllers
                 AppUser user = await _usermanager.Users.Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).FirstOrDefaultAsync(u => u.Id == User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 if (user is null)
                 {
-                    return NotFound();
+                    throw new NotFoundException("Oops, no user found :'(");
                 }
 
                 var item = user.BasketItems.FirstOrDefault(bi => bi.ProductId == id);

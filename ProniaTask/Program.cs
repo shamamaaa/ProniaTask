@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.DAL;
 using ProniaTask.Interfaces;
+using ProniaTask.Middlewares;
 using ProniaTask.Models;
 using ProniaTask.Services;
 
@@ -36,7 +37,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseStaticFiles();
- 
+
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+
 app.UseEndpoints(endpoints =>
 endpoints.MapControllerRoute(
     name: "areas",

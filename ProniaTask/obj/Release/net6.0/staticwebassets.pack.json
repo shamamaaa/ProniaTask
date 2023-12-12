@@ -365,6 +365,10 @@
       "PackagePath": "staticwebassets/admin/vendors/mdi/fonts/materialdesignicons-webfont.woff2"
     },
     {
+      "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/.DS_Store",
+      "PackagePath": "staticwebassets/assets/.DS_Store"
+    },
+    {
       "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/css/Pe-icon-7-stroke.css",
       "PackagePath": "staticwebassets/assets/css/Pe-icon-7-stroke.css"
     },
@@ -447,6 +451,10 @@
     {
       "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/fonts/fontawesome-webfont.woff2",
       "PackagePath": "staticwebassets/assets/fonts/fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/404.png",
+      "PackagePath": "staticwebassets/assets/images/404.png"
     },
     {
       "Id": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/about/icon/1.png",

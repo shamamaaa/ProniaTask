@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UKqcXMSenizkrIbjMNieVaYuzCHjBw4ga8yIPkockIc=",
+  "Hash": "AE852DL9dVHZL8FH3KVzz9sQ2j97wces13juJEZ9Wpo=",
   "Source": "ProniaTask",
   "BasePath": "_content/ProniaTask",
   "Mode": "Default",
@@ -1564,6 +1564,23 @@
       "OriginalItemSpec": "wwwroot/admin/vendors/mdi/fonts/materialdesignicons-webfont.woff2"
     },
     {
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/.DS_Store",
+      "SourceId": "ProniaTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
+      "BasePath": "_content/ProniaTask",
+      "RelativePath": "assets/.DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/.DS_Store"
+    },
+    {
       "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/css/animate.min.css",
       "SourceId": "ProniaTask",
       "SourceType": "Discovered",
@@ -1919,6 +1936,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/fonts/Pe-icon-7-stroke.woff"
+    },
+    {
+      "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/404.png",
+      "SourceId": "ProniaTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/",
+      "BasePath": "_content/ProniaTask",
+      "RelativePath": "assets/images/404.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/images/404.png"
     },
     {
       "Identity": "/Users/shamamaguliyeva/Desktop/ProniaTask/ProniaTask/wwwroot/assets/images/about/icon/1.png",

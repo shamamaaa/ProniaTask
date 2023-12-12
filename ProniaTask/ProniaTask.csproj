@@ -47,6 +47,8 @@
     <None Remove="Utilities\Enum\" />
     <None Remove="Views\Basket\" />
     <None Remove="Interfaces\" />
+    <None Remove="Middlewares\" />
+    <None Remove="Utilities\Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -92,6 +94,8 @@
     <Folder Include="Utilities\Enum\" />
     <Folder Include="Views\Basket\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="Utilities\Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaTask.DAL;
 using ProniaTask.Models;
+using ProniaTask.Utilities.Exceptions;
 using ProniaTask.ViewModels;
 
 namespace ProniaTask.Controllers
@@ -30,7 +31,7 @@ namespace ProniaTask.Controllers
         {
             if (id <= 0)
             {
-                return BadRequest();
+                throw new WrongRequestException();
             }
 
             Product product = _context.Products
@@ -43,7 +44,7 @@ namespace ProniaTask.Controllers
 
             if (product == null)
             {
-                return NotFound();
+                throw new NotFoundException("Oops, no product found :'(");
             }
 
 

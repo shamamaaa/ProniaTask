@@ -34,6 +34,10 @@ namespace ProniaTask.Controllers
             return View(vm);
         }
 
+        public IActionResult ErrorPage(string error)
+        {
+            return View(model:error);
+        }
 
 
     }
