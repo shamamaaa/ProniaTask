@@ -27,10 +27,24 @@ namespace ProniaTask.Areas.ProniaAdmin.Controllers
         }
 
         [Authorize(Roles = "Admin,Moderator")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page)
         {
-            List<Product> products = await _context.Products.Include(p=>p.Category).Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary==true)).ToListAsync();
-            return View(products);
+            double count = await _context.Products.CountAsync();
+
+            List<Product> products = await _context.Products.Skip(page*5).Take(5)
+                .Include(p=>p.Category)
+                .Include(p=>p.ProductImages
+                .Where(pi=>pi.IsPrimary==true))
+                .ToListAsync();
+
+            PaginationVM<Product> paginationVM = new PaginationVM<Product>
+            {
+                TotalPage = Math.Ceiling(count / 5),
+                CurrentPage = page + 1,
+                Items= products
+            };
+
+            return View(paginationVM);
         }
 
         [Authorize(Roles = "Admin,Moderator")]
